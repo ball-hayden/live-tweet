@@ -8,6 +8,7 @@ body {
 
 .post {
   margin: 4em auto;
+  border-radius: 10px;
 }
 
 .post-user {
