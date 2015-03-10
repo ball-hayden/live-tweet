@@ -1,0 +1,18 @@
+.animate {
+  -webkit-transition: 1000ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
+  transition: 1000ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
+  position: relative;
+  display: block;
+}
+
+.animate.ng-leave,
+.animate.ng-enter.ng-enter-active {
+  top: 0;
+  max-height: 400px;
+}
+
+.animate.ng-enter,
+.animate.ng-leave.ng-leave-active {
+  top: -400px;
+  max-height: 0;
+}
