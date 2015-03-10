@@ -1,8 +1,10 @@
 <section class="post" ng-controller="TweetCtrl">
     <header class="post-header">
         <img class="post-avatar" alt="{{tweet.user.name}}" height="52" width="52" src="{{tweet.user.image}}" />
-        <h4 class="post-user"> {{tweet.user.name}} @ {{tweet.location}}</h4>
+        <h4 class="post-user">{{tweet.user.name}}</h4>
         <h5>{{tweet.text}}</h5>
+
+        <img class="post-image" src="{{tweet.media.media_url}}"></img>
 
         <button ng-click="allowTweet()" ng-disabled="btnIsDisabled">{{btnText}}</button>
         <button ng-click="removeTweet(tweet)" ng-disabled="btnIsDisabled">Remove</button>

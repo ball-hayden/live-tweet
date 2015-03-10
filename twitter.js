@@ -6,7 +6,7 @@ var isFirstConnectionToTwitter = true;
 module.exports = function Twitter(config) {
   var T = new Twit(config);
 
-  var stream = T.stream('statuses/filter', { track: 'news' });
+  var stream = T.stream('statuses/filter', { track: 'picture' });
   var tweetsBuffer = [];
   var oldTweetsBuffer = [];
 
@@ -71,10 +71,13 @@ module.exports = function Twitter(config) {
     //Create message containing tweet + location + username + profile pic
     var msg = {};
     msg.text = tweet.text;
-    msg.location = tweet.place.full_name;
+
+    if (tweet.entities.media) {
+      msg.media = tweet.entities.media[0];
+    }
     msg.user = {
       name: tweet.user.name,
-      image: tweet.user.profile_image_url
+      image: tweet.user.profile_image_url.replace('_normal.', '_bigger.')
     };
 
     io.sockets.emit('tweet-io:tweet', msg);
