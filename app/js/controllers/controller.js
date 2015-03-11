@@ -51,6 +51,7 @@ appControllers.controller('TweetCtrl', ['$scope', 'socket',
 			elem.css({
 				position: 'absolute',
 				top:   elem.offset().top - 52,
+				left:  elem.offset().left,
 				width: elem.outerWidth()
 			});
 
@@ -58,7 +59,7 @@ appControllers.controller('TweetCtrl', ['$scope', 'socket',
 				$('.lowlight').addClass('active');
 				elem.addClass('transition');
 				elem.addClass('highlight');
-				elem.css({ top: '' });
+				elem.css({ top: '', left: '', width: '' });
 			}, 200);
 
 		}
@@ -73,7 +74,9 @@ appControllers.controller('TweetCtrl', ['$scope', 'socket',
 			if (placeholder.length > 0) {
 				elem.css({
 					position: 'absolute',
-					top: placeholder.offset().top - 52
+					top:   placeholder.offset().top - 52,
+					left:  placeholder.offset().left,
+					width: placeholder.outerWidth()
 				});
 			}
 

@@ -61,7 +61,10 @@ body {
   position: absolute;
   margin:   0;
 
-  top:    10%;
+  top:  10%;
+  left: 10%;
+
+  width: 80%;
 
   max-height: 80%;
 
@@ -78,7 +81,8 @@ body {
 }
 
 .highlight h5 {
-  margin-top: 3em;
+  margin-top:    3em;
+  margin-bottom: 3em;
 
   margin-left:  150px;
   margin-right: 150px;
