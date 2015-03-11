@@ -42,6 +42,14 @@ module.exports = function Twitter(config) {
     socket.on('moderated-tweet-io:tweet', function(data) {
       io.sockets.emit('moderated-tweet-io:tweet', data);
     })
+
+    socket.on('moderated-tweet-io:highlight', function(data) {
+      io.sockets.emit('moderated-tweet-io:highlight', data);
+    })
+
+    socket.on('moderated-tweet-io:unhighlight', function(data) {
+      io.sockets.emit('moderated-tweet-io:unhighlight', data);
+    })
   });
 
 
@@ -70,11 +78,13 @@ module.exports = function Twitter(config) {
 
     //Create message containing tweet + location + username + profile pic
     var msg = {};
+    msg.id   = tweet.id_str
     msg.text = tweet.text;
 
     if (tweet.entities.media) {
       msg.media = tweet.entities.media[0];
     }
+
     msg.user = {
       name: tweet.user.name,
       image: tweet.user.profile_image_url.replace('_normal.', '_bigger.')
