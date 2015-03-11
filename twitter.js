@@ -43,6 +43,10 @@ module.exports = function Twitter(config) {
       io.sockets.emit('moderated-tweet-io:tweet', data);
     })
 
+    socket.on('moderated-tweet-io:remove', function(data) {
+      io.sockets.emit('moderated-tweet-io:remove', data);
+    })
+
     socket.on('moderated-tweet-io:highlight', function(data) {
       io.sockets.emit('moderated-tweet-io:highlight', data);
     })

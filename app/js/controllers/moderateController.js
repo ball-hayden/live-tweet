@@ -19,20 +19,21 @@ appControllers.controller('TweetCtrl', ['$scope', 'socket',
 		$scope.highlightDisabled = true;
 		$scope.highlightText = 'Highlight';
 
-		$scope.btnIsDisabled = false;
-		$scope.btnText = 'Allow'
+		$scope.allowDisabled = false;
+		$scope.allowText = 'Allow'
 
 		$scope.allowTweet = function allowTweet () {
-			$scope.btnIsDisabled = true;
-			$scope.btnText = 'Allowed'
+			$scope.allowDisabled = true;
+			$scope.allowText = 'Allowed'
 
 			socket.emit('moderated-tweet-io:tweet', $scope.tweet)
 			$scope.highlightDisabled = false;
 		}
 
-		$scope.removeTweet = function removeTweet(item) {
-		  var index = $scope.tweets.indexOf(item);
+		$scope.removeTweet = function removeTweet() {
+		  var index = $scope.tweets.indexOf($scope.tweet);
   	  $scope.tweets.splice(index, 1);
+			socket.emit('moderated-tweet-io:remove', $scope.tweet);
 		}
 
 		$scope.highlight = function highlight() {

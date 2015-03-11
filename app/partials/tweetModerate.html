@@ -6,8 +6,8 @@
 
         <img class="post-image" src="{{tweet.media.media_url}}"></img>
 
-        <button ng-click="allowTweet()" ng-disabled="btnIsDisabled">{{btnText}}</button>
-        <button ng-click="removeTweet(tweet)" ng-disabled="btnIsDisabled">Remove</button>
+        <button ng-click="allowTweet()" ng-disabled="allowDisabled">{{allowText}}</button>
+        <button ng-click="removeTweet()">Remove</button>
         <button ng-click="highlight()" ng-disabled="highlightDisabled">{{highlightText}}</button>
     </header>
 </section>

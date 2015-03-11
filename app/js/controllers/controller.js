@@ -9,6 +9,18 @@ appControllers.controller('TweetCtrl', ['$scope', 'socket',
 			  $scope.tweets = $scope.tweets.concat([data]);
 			});
 
+			socket.on('moderated-tweet-io:remove', function (data) {
+				var tweet = $.grep($scope.tweets, function(tweet) {
+					return tweet.id == data.id
+				});
+
+				var index = $scope.tweets.indexOf(tweet[0]);
+
+				if (index >= 0) {
+					$scope.tweets.splice(index, 1);
+				}
+			});
+
 			socket.on('moderated-tweet-io:highlight', function (tweet) {
 				$scope.highlight(tweet);
 			});
